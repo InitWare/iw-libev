@@ -1304,7 +1304,7 @@ The given async watcher has been asynchronously notified (see C<ev_async>).
 Not ever sent (or otherwise used) by libev itself, but can be freely used
 by libev users to signal watchers (e.g. via C<ev_feed_event>).
 
-=item C<EV_ERROR>
+=item C<EV_LERROR>
 
 An unspecified error has occurred, the watcher has been stopped. This might
 happen because the watcher could not be properly started because libev
@@ -3664,7 +3664,7 @@ repeat = 0) will be started. C<0> is a valid timeout.
 
 The callback has the type C<void (*cb)(int revents, void *arg)> and is
 passed an C<revents> set like normal event callbacks (a combination of
-C<EV_ERROR>, C<EV_READ>, C<EV_WRITE> or C<EV_TIMER>) and the C<arg>
+C<EV_LERROR>, C<EV_READ>, C<EV_WRITE> or C<EV_TIMER>) and the C<arg>
 value passed to C<ev_once>. Note that it is possible to receive I<both>
 a timeout and an io event at the same time - you probably should give io
 events precedence.

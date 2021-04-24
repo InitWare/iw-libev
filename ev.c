@@ -2492,7 +2492,7 @@ fd_kill (EV_P_ int fd)
   while ((w = (ev_io *)anfds [fd].head))
     {
       ev_io_stop (EV_A_ w);
-      ev_feed_event (EV_A_ (W)w, EV_ERROR | EV_READ | EV_WRITE);
+      ev_feed_event (EV_A_ (W)w, EV_LERROR | EV_READ | EV_WRITE);
     }
 }
 

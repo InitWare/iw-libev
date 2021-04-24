@@ -1438,9 +1438,9 @@ The given async watcher has been asynchronously notified (see \f(CW\*(C`ev_async
 .IX Item "EV_CUSTOM"
 Not ever sent (or otherwise used) by libev itself, but can be freely used
 by libev users to signal watchers (e.g. via \f(CW\*(C`ev_feed_event\*(C'\fR).
-.ie n .IP """EV_ERROR""" 4
+.ie n .IP """EV_LERROR""" 4
 .el .IP "\f(CWEV_ERROR\fR" 4
-.IX Item "EV_ERROR"
+.IX Item "EV_LERROR"
 An unspecified error has occurred, the watcher has been stopped. This might
 happen because the watcher could not be properly started because libev
 ran out of memory, a file descriptor was found to be closed or any other
@@ -3796,7 +3796,7 @@ repeat = 0) will be started. \f(CW0\fR is a valid timeout.
 .Sp
 The callback has the type \f(CW\*(C`void (*cb)(int revents, void *arg)\*(C'\fR and is
 passed an \f(CW\*(C`revents\*(C'\fR set like normal event callbacks (a combination of
-\&\f(CW\*(C`EV_ERROR\*(C'\fR, \f(CW\*(C`EV_READ\*(C'\fR, \f(CW\*(C`EV_WRITE\*(C'\fR or \f(CW\*(C`EV_TIMER\*(C'\fR) and the \f(CW\*(C`arg\*(C'\fR
+\&\f(CW\*(C`EV_LERROR\*(C'\fR, \f(CW\*(C`EV_READ\*(C'\fR, \f(CW\*(C`EV_WRITE\*(C'\fR or \f(CW\*(C`EV_TIMER\*(C'\fR) and the \f(CW\*(C`arg\*(C'\fR
 value passed to \f(CW\*(C`ev_once\*(C'\fR. Note that it is possible to receive \fIboth\fR
 a timeout and an io event at the same time \- you probably should give io
 events precedence.

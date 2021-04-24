@@ -176,7 +176,7 @@ ev_x_cb_sig (EV_P_ struct ev_signal *w, int revents)
 {
   struct event *ev = (struct event *)(((char *)w) - offsetof (struct event, iosig.sig));
 
-  if (revents & EV_ERROR)
+  if (revents & EV_LERROR)
     event_del (ev);
 
   ev_x_cb (ev, revents);
@@ -187,7 +187,7 @@ ev_x_cb_io (EV_P_ struct ev_io *w, int revents)
 {
   struct event *ev = (struct event *)(((char *)w) - offsetof (struct event, iosig.io));
 
-  if ((revents & EV_ERROR) || !(ev->ev_events & EV_PERSIST))
+  if ((revents & EV_LERROR) || !(ev->ev_events & EV_PERSIST))
     event_del (ev);
 
   ev_x_cb (ev, revents);
