@@ -253,6 +253,8 @@
 /* try to deduce the maximum number of signals on this platform */
 #if defined EV_NSIG
 /* use what's provided */
+#elif defined(__FreeBSD__) | defined(__NetBSD__) | defined(__DragonFlyBSD__)
+# define EV_NSIG (SIGRTMAX)
 #elif defined NSIG
 # define EV_NSIG (NSIG)
 #elif defined _NSIG
