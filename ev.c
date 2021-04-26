@@ -4330,13 +4330,13 @@ ev_stop (EV_P_ W w)
 /*****************************************************************************/
 
 ecb_noinline
-void
+int
 ev_io_start (EV_P_ ev_io *w) EV_NOEXCEPT
 {
   int fd = w->fd;
 
   if (ecb_expect_false (ev_is_active (w)))
-    return;
+    return 0;
 
   assert (("libev: ev_io_start called with negative fd", fd >= 0));
   assert (("libev: ev_io_start called with illegal event mask", !(w->events & ~(EV__IOFDSET | EV_READ | EV_WRITE))));
@@ -4357,6 +4357,8 @@ ev_io_start (EV_P_ ev_io *w) EV_NOEXCEPT
   w->events &= ~EV__IOFDSET;
 
   EV_FREQUENT_CHECK;
+
+  return 0;
 }
 
 ecb_noinline
@@ -4383,11 +4385,11 @@ ev_io_stop (EV_P_ ev_io *w) EV_NOEXCEPT
 }
 
 ecb_noinline
-void
+int
 ev_timer_start (EV_P_ ev_timer *w) EV_NOEXCEPT
 {
   if (ecb_expect_false (ev_is_active (w)))
-    return;
+    return 0;
 
   ev_at (w) += mn_now;
 
@@ -4405,6 +4407,8 @@ ev_timer_start (EV_P_ ev_timer *w) EV_NOEXCEPT
   EV_FREQUENT_CHECK;
 
   /*assert (("libev: internal timer heap corruption", timers [ev_active (w)] == (WT)w));*/
+
+  return 0;
 }
 
 ecb_noinline
@@ -4439,7 +4443,7 @@ ev_timer_stop (EV_P_ ev_timer *w) EV_NOEXCEPT
 }
 
 ecb_noinline
-void
+int
 ev_timer_again (EV_P_ ev_timer *w) EV_NOEXCEPT
 {
   EV_FREQUENT_CHECK;
@@ -4460,10 +4464,12 @@ ev_timer_again (EV_P_ ev_timer *w) EV_NOEXCEPT
   else if (w->repeat)
     {
       ev_at (w) = w->repeat;
-      ev_timer_start (EV_A_ w);
+      return ev_timer_start (EV_A_ w);
     }
 
   EV_FREQUENT_CHECK;
+
+  return 0;
 }
 
 ev_tstamp
@@ -4474,11 +4480,11 @@ ev_timer_remaining (EV_P_ ev_timer *w) EV_NOEXCEPT
 
 #if EV_PERIODIC_ENABLE
 ecb_noinline
-void
+int
 ev_periodic_start (EV_P_ ev_periodic *w) EV_NOEXCEPT
 {
   if (ecb_expect_false (ev_is_active (w)))
-    return;
+    return 0;
 
 #if EV_USE_TIMERFD
   if (timerfd == -2)
@@ -4507,6 +4513,8 @@ ev_periodic_start (EV_P_ ev_periodic *w) EV_NOEXCEPT
   EV_FREQUENT_CHECK;
 
   /*assert (("libev: internal periodic heap corruption", ANHE_w (periodics [ev_active (w)]) == (WT)w));*/
+
+  return 0;
 }
 
 ecb_noinline
@@ -4539,12 +4547,12 @@ ev_periodic_stop (EV_P_ ev_periodic *w) EV_NOEXCEPT
 }
 
 ecb_noinline
-void
+int
 ev_periodic_again (EV_P_ ev_periodic *w) EV_NOEXCEPT
 {
   /* TODO: use adjustheap and recalculation */
   ev_periodic_stop (EV_A_ w);
-  ev_periodic_start (EV_A_ w);
+  return ev_periodic_start (EV_A_ w);
 }
 #endif
 
@@ -4555,11 +4563,11 @@ ev_periodic_again (EV_P_ ev_periodic *w) EV_NOEXCEPT
 #if EV_SIGNAL_ENABLE
 
 ecb_noinline
-void
+int
 ev_signal_start (EV_P_ ev_signal *w) EV_NOEXCEPT
 {
   if (ecb_expect_false (ev_is_active (w)))
-    return;
+    return 0;
 
   assert (("libev: ev_signal_start called with illegal signal number", w->signum > 0 && w->signum < EV_NSIG));
 
@@ -4635,6 +4643,8 @@ ev_signal_start (EV_P_ ev_signal *w) EV_NOEXCEPT
       }
 
   EV_FREQUENT_CHECK;
+
+  return 0;
 }
 
 ecb_noinline

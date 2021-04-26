@@ -759,25 +759,25 @@ EV_API_DECL void ev_feed_signal_event (EV_P_ int signum) EV_NOEXCEPT;
 EV_API_DECL void ev_invoke         (EV_P_ void *w, int revents);
 EV_API_DECL int  ev_clear_pending  (EV_P_ void *w) EV_NOEXCEPT;
 
-EV_API_DECL void ev_io_start       (EV_P_ ev_io *w) EV_NOEXCEPT;
+EV_API_DECL int ev_io_start       (EV_P_ ev_io *w) EV_NOEXCEPT;
 EV_API_DECL void ev_io_stop        (EV_P_ ev_io *w) EV_NOEXCEPT;
 
-EV_API_DECL void ev_timer_start    (EV_P_ ev_timer *w) EV_NOEXCEPT;
+EV_API_DECL int ev_timer_start    (EV_P_ ev_timer *w) EV_NOEXCEPT;
 EV_API_DECL void ev_timer_stop     (EV_P_ ev_timer *w) EV_NOEXCEPT;
 /* stops if active and no repeat, restarts if active and repeating, starts if inactive and repeating */
-EV_API_DECL void ev_timer_again    (EV_P_ ev_timer *w) EV_NOEXCEPT;
+EV_API_DECL int ev_timer_again    (EV_P_ ev_timer *w) EV_NOEXCEPT;
 /* return remaining time */
 EV_API_DECL ev_tstamp ev_timer_remaining (EV_P_ ev_timer *w) EV_NOEXCEPT;
 
 #if EV_PERIODIC_ENABLE
-EV_API_DECL void ev_periodic_start (EV_P_ ev_periodic *w) EV_NOEXCEPT;
+EV_API_DECL int ev_periodic_start (EV_P_ ev_periodic *w) EV_NOEXCEPT;
 EV_API_DECL void ev_periodic_stop  (EV_P_ ev_periodic *w) EV_NOEXCEPT;
-EV_API_DECL void ev_periodic_again (EV_P_ ev_periodic *w) EV_NOEXCEPT;
+EV_API_DECL int ev_periodic_again (EV_P_ ev_periodic *w) EV_NOEXCEPT;
 #endif
 
 /* only supported in the default loop */
 #if EV_SIGNAL_ENABLE
-EV_API_DECL void ev_signal_start   (EV_P_ ev_signal *w) EV_NOEXCEPT;
+EV_API_DECL int ev_signal_start   (EV_P_ ev_signal *w) EV_NOEXCEPT;
 EV_API_DECL void ev_signal_stop    (EV_P_ ev_signal *w) EV_NOEXCEPT;
 #endif
 
